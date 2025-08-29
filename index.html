@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FurGlo - The Ultimate Pet Management App</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="FurGlo Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#showcase">App Showcase</a></li>
+                    <li><a href="#timeline">Journey</a></li>
+                    <li><a href="#download">Download</a></li>
+                    <li><a href="reg.html" class="nav-highlight">For Professionals</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="video-background">
+            <video autoplay muted loop id="hero-video">
+                <source src="assets/videos/hero-video1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="overlay"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="reveal-text">The Ultimate Companion for Pet Parents</h1>
+                <p class="reveal-text">Track, manage, and share your pet's health and happiness all in one place.</p>
+                <div class="cta-buttons reveal-item">
+                    <a href="#download" class="btn btn-primary">Download Now</a>
+                    <a href="#features" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="arrow">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title reveal-text">Why Pet Parents Love FurGlo</h2>
+            <div class="features-grid">
+                <div class="feature reveal-item">
+                    <div class="feature-icon">
+                        <img src="assets/images/pet-profile.png" alt="Profile Management">
+                    </div>
+                    <h3>Pet Profile Management</h3>
+                    <p>Create detailed profiles for all your furry friends with breed, age, weight tracking and more.</p>
+                </div>
+                <div class="feature reveal-item" data-delay="100">
+                    <div class="feature-icon">
+                        <img src="assets/images/vaccination-icon.png" alt="Vaccination Tracking">
+                    </div>
+                    <h3>Vaccination & Medication Tracking</h3>
+                    <p>Never miss an important shot or medicine dose with our smart reminder system.</p>
+                </div>
+                <div class="feature reveal-item" data-delay="200">
+                    <div class="feature-icon">
+                        <img src="assets/images/feeding-icon.png" alt="Feeding Logs">
+                    </div>
+                    <h3>Feeding & Exercise Logs</h3>
+                    <p>Monitor your pet's diet and activity to ensure they stay healthy and fit.</p>
+                </div>
+                <div class="feature reveal-item" data-delay="300">
+                    <div class="feature-icon">
+                        <img src="assets/images/document-icon.png" alt="Document Upload">
+                    </div>
+                    <h3>Document Upload & Reminders</h3>
+                    <p>Store all your pet's important documents in one place and set up customized reminders.</p>
+                </div>
+                <div class="feature reveal-item" data-delay="400">
+                    <div class="feature-icon">
+                        <img src="assets/images/sharing-icon.png" alt="Professional Sharing">
+                    </div>
+                    <h3>Professional Sharing Access</h3>
+                    <p>Share vital pet information with vets, groomers, and pet sitters with just one tap.</p>
+                </div>
+            </div>
+            <div class="connecting-lines">
+                <svg class="line line-1" viewBox="0 0 200 100" preserveAspectRatio="none">
+                    <path d="M0,50 C20,0 50,100 80,50 S120,0 200,50" stroke-width="3" fill="none" />
+                </svg>
+                <svg class="line line-2" viewBox="0 0 200 100" preserveAspectRatio="none">
+                    <path d="M200,50 C150,0 120,100 80,50 S20,0 0,50" stroke-width="3" fill="none" />
+                </svg>
+                <svg class="line line-3" viewBox="0 0 200 100" preserveAspectRatio="none">
+                    <path d="M0,50 C30,100 70,0 120,50 S180,100 200,50" stroke-width="3" fill="none" />
+                </svg>
+                <svg class="line line-4" viewBox="0 0 200 100" preserveAspectRatio="none">
+                    <path d="M200,50 C150,0 100,100 50,30 S30,70 0,50" stroke-width="3" fill="none" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase-wrapper" id="showcase">
+    <div class="container">
+        <h2 class="section-title reveal-text">Experience FurGlo</h2>
+    </div>
+    
+    <div class="showcase-container">
+        <div class="showcase-section" id="section-1" data-screen="0">
+            <div class="showcase-content">
+                <div class="showcase-text">
+                    <h3>Pet Profile Management</h3>
+                    <p>Create detailed profiles for each of your pets with customizable fields for breed, age, weight, and more. Track their growth and development over time with our easy-to-use interface.</p>
+                </div>
+            </div>
+            <div class="showcase-phone">
+                <div class="phone-frame">
+                    <img src="assets/images/phone-frame.png" alt="Phone Frame" class="frame">
+                    <div class="screen-container">
+                        <img src="assets/images/screen-1.jpg" alt="App Screen 1" class="screen active" data-index="0">
+                        <img src="assets/images/screen-2.jpeg" alt="App Screen 2" class="screen" data-index="1">
+                        <img src="assets/images/screen-3.jpg" alt="App Screen 3" class="screen" data-index="2">
+                        <img src="assets/images/screen-4.jpg" alt="App Screen 4" class="screen" data-index="3">
+                        <img src="assets/images/screen-5.png" alt="App Screen 5" class="screen" data-index="4">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="showcase-section" id="section-2" data-screen="1">
+            <div class="showcase-content">
+                <div class="showcase-text">
+                    <h3>Vaccination & Medication Tracking</h3>
+                    <p>Keep track of all vaccinations, medications, and treatments with our intuitive calendar system. Get timely reminders for upcoming appointments and medication doses.</p>
+                </div>
+            </div>
+            <div class="showcase-phone">
+                <div class="phone-frame">
+                    <img src="assets/images/phone-frame.png" alt="Phone Frame" class="frame">
+                    <div class="screen-container">
+                        <img src="assets/images/screen-1.jpg" alt="App Screen 1" class="screen" data-index="0">
+                        <img src="assets/images/screen-2.jpeg" alt="App Screen 2" class="screen active" data-index="1">
+                        <img src="assets/images/screen-3.jpg" alt="App Screen 3" class="screen" data-index="2">
+                        <img src="assets/images/screen-4.jpg" alt="App Screen 4" class="screen" data-index="3">
+                        <img src="assets/images/screen-5.png" alt="App Screen 5" class="screen" data-index="4">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="showcase-section" id="section-3" data-screen="2">
+            <div class="showcase-content">
+                <div class="showcase-text">
+                    <h3>Feeding & Exercise Logs</h3>
+                    <p>Monitor your pet's diet and activity levels with customizable logs. Track feeding times, food types, and exercise duration to ensure your pet maintains optimal health.</p>
+                </div>
+            </div>
+            <div class="showcase-phone">
+                <div class="phone-frame">
+                    <img src="assets/images/phone-frame.png" alt="Phone Frame" class="frame">
+                    <div class="screen-container">
+                        <img src="assets/images/screen-1.jpg" alt="App Screen 1" class="screen" data-index="0">
+                        <img src="assets/images/screen-2.jpg" alt="App Screen 2" class="screen" data-index="1">
+                        <img src="assets/images/screen-3.jpg" alt="App Screen 3" class="screen active" data-index="2">
+                        <img src="assets/images/screen-4.jpg" alt="App Screen 4" class="screen" data-index="3">
+                        <img src="assets/images/screen-5.png" alt="App Screen 5" class="screen" data-index="4">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="showcase-section" id="section-4" data-screen="3">
+            <div class="showcase-content">
+                <div class="showcase-text">
+                    <h3>Document Upload & Reminders</h3>
+                    <p>Store all important pet documents in one secure place. Upload medical records, insurance papers, and certificates, and set reminders for renewals and check-ups.</p>
+                </div>
+            </div>
+            <div class="showcase-phone">
+                <div class="phone-frame">
+                    <img src="assets/images/phone-frame.png" alt="Phone Frame" class="frame">
+                    <div class="screen-container">
+                        <img src="assets/images/screen-1.jpg" alt="App Screen 1" class="screen" data-index="0">
+                        <img src="assets/images/screen-2.jpg" alt="App Screen 2" class="screen" data-index="1">
+                        <img src="assets/images/screen-3.jpg" alt="App Screen 3" class="screen" data-index="2">
+                        <img src="screen-4.jpg" alt="App Screen 4" class="screen active" data-index="3">
+                        <img src="assets/images/screen-5.png" alt="App Screen 5" class="screen" data-index="4">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="showcase-section" id="section-5" data-screen="4">
+            <div class="showcase-content">
+                <div class="showcase-text">
+                    <h3>Professional Sharing Access</h3>
+                    <p>Share essential information with veterinarians, pet sitters, and groomers with just a tap. Control what information is shared and for how long to maintain privacy.</p>
+                </div>
+            </div>
+            <div class="showcase-phone">
+                <div class="phone-frame">
+                    <img src="assets/images/phone-frame.png" alt="Phone Frame" class="frame">
+                    <div class="screen-container">
+                        <img src="assets/images/screen-1.jpg" alt="App Screen 1" class="screen" data-index="0">
+                        <img src="assets/images/screen-2.jpg" alt="App Screen 2" class="screen" data-index="1">
+                        <img src="assets/images/screen-3.jpg" alt="App Screen 3" class="screen" data-index="2">
+                        <img src="assets/images/screen-4.jpg" alt="App Screen 4" class="screen" data-index="3">
+                        <img src="screen-5.png" alt="App Screen 5" class="screen active" data-index="4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="connecting-lines">
+        <svg class="line line-5" viewBox="0 0 200 100" preserveAspectRatio="none">
+            <path d="M0,20 C40,80 80,0 120,50 S160,80 200,30" stroke="#38B2AC" stroke-width="3" fill="none" />
+        </svg>
+        <svg class="line line-6" viewBox="0 0 200 100" preserveAspectRatio="none">
+            <path d="M200,70 C160,20 100,90 60,40 S20,60 0,10" stroke="#ED8936" stroke-width="3" fill="none" />
+        </svg>
+    </div>
+</section>
+
+    <section class="timeline" id="timeline">
+        <div class="container">
+            <h2 class="section-title reveal-text">Your Pet's Journey with FurGlo</h2>
+            
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item reveal-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Day 1</div>
+                        <h3>Welcome to the Family</h3>
+                        <p>Create your pet's profile with all essential information. Set up their first health reminders and start tracking their daily routine.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item reveal-item" data-delay="100">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Week 1</div>
+                        <h3>Health Baseline</h3>
+                        <p>Record initial vet visits, vaccinations, and health metrics. Set up feeding schedules and medication reminders to keep your pet on track.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item reveal-item" data-delay="200">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Month 1</div>
+                        <h3>Growth & Development</h3>
+                        <p>Track your pet's growth milestones and adjust their care routines as needed. Review health patterns and activity trends.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item reveal-item" data-delay="300">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Month 3</div>
+                        <h3>Care Network</h3>
+                        <p>Connect with veterinarians, groomers, and pet sitters through the app. Share necessary information and coordinate care seamlessly.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item reveal-item" data-delay="400">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Year 1 and Beyond</div>
+                        <h3>Lifetime Companion</h3>
+                        <p>Access your pet's complete health history, celebrate growth milestones, and ensure they receive the best possible care throughout their life.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="connecting-lines">
+                <svg class="line line-7" viewBox="0 0 200 100" preserveAspectRatio="none">
+                    <path d="M0,80 C50,20 100,90 150,30 S180,70 200,40" stroke="#9F7AEA" stroke-width="3" fill="none" />
+                </svg>
+                <svg class="line line-8" viewBox="0 0 200 100" preserveAspectRatio="none">
+                    <path d="M200,60 C150,20 100,70 50,10 S20,50 0,30" stroke="#38B2AC" stroke-width="3" fill="none" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="download">
+        <div class="cta-bg"></div>
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="reveal-text">Ready to Transform Pet Care?</h2>
+                <p class="reveal-text">Download FurGlo today and give your pets the care management they deserve.</p>
+                <div class="app-buttons reveal-item">
+                    <a href="#" class="app-button" aria-label="Download on the App Store">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                    </a>
+                    <a href="#" class="app-button" aria-label="Get it on Google Play">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="connecting-lines">
+            <svg class="line line-9" viewBox="0 0 200 100" preserveAspectRatio="none">
+                <path d="M0,30 C40,80 80,10 120,60 S170,20 200,70" stroke="#ED8936" stroke-width="3" fill="none" />
+            </svg>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="big-logo reveal-text">FurGlo</div>
+            <div class="footer-links">
+                <div class="footer-col reveal-item">
+                    <h4>App</h4>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Download</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col reveal-item" data-delay="100">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col reveal-item" data-delay="200">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col reveal-item" data-delay="300">
+                    <h4>Connect</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright reveal-item" data-delay="400">
+                <p>&copy; 2025 FurGlo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

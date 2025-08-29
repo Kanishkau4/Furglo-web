@@ -1,0 +1,3030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FurGlo - Service Provider Registration</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <style>
+        /* Provider Registration Specific Styles */
+        .provider-hero {
+            min-height: 60vh;
+            background: linear-gradient(135deg, #FFA45B, #FF8F3D);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .provider-hero-content {
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .provider-hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .provider-hero-content h1:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: white;
+            border-radius: 2px;
+        }
+        
+        .provider-hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .provider-hero-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .provider-hero-shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        .provider-hero-shape-1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            left: -100px;
+        }
+        
+        .provider-hero-shape-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -50px;
+            right: 10%;
+        }
+        
+        .provider-hero-shape-3 {
+            width: 150px;
+            height: 150px;
+            top: 20%;
+            right: -50px;
+        }
+        
+        .provider-cards {
+            padding: 80px 0;
+            background: #f7fafc;
+            position: relative;
+        }
+        
+        .provider-type-selector {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .provider-type-card {
+            width: 180px;
+            height: 220px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .provider-type-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .provider-type-card.active {
+            border: 3px solid var(--primary);
+            transform: translateY(-15px) scale(1.05);
+        }
+        
+        .provider-type-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .provider-type-card:hover:before {
+            transform: translateY(0);
+        }
+        
+        .provider-icon {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .provider-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .provider-type-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .provider-type-card p {
+            font-size: 0.8rem;
+            color: #4A5568;
+            line-height: 1.4;
+        }
+        
+        .registration-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+            min-height: 600px;
+            display: none;
+        }
+        
+        .registration-container.active {
+            display: block;
+        }
+        
+        .registration-header {
+            background: var(--gradient-primary);
+            padding: 30px;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .registration-header h2 {
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+        
+        .registration-header p {
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .registration-steps {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .step-indicator {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            position: relative;
+            margin: 0 25px;
+        }
+        
+        .step-indicator.active {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .step-indicator.completed {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .step-indicator.completed:after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .step-indicator:not(:last-child):before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            width: 50px;
+            height: 2px;
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-50%);
+        }
+        
+        .step-indicator.completed:not(:last-child):before {
+            background: white;
+        }
+        
+        .registration-form {
+            padding: 40px;
+        }
+        
+        .form-step {
+            display: none;
+        }
+        
+        .form-step.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-input:focus {
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(255, 164, 91, 0.2);
+            outline: none;
+        }
+        
+        .form-select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+            font-family: 'Montserrat', sans-serif;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%234A5568' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 18px;
+        }
+        
+        .form-select:focus {
+            border-color: var(--primary);
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(255, 164, 91, 0.2);
+            outline: none;
+        }
+        
+        .form-group-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .file-upload {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            border: 2px dashed #e2e8f0;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: #f8fafc;
+        }
+        
+        .file-upload:hover {
+            border-color: var(--primary);
+            background: rgba(255, 164, 91, 0.05);
+        }
+        
+        .file-upload input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+        
+        .file-upload i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .file-upload p {
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .file-upload span {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.85rem;
+            color: #718096;
+        }
+        
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        .btn-back {
+            background: #f7fafc;
+            color: #4A5568;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .btn-back:hover {
+            background: #edf2f7;
+            transform: translateY(-3px);
+        }
+        
+        .upload-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .preview-item {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .preview-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .preview-item .remove-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 20px;
+            height: 20px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.7rem;
+            color: #e53e3e;
+        }
+        
+        .success-container {
+            display: none;
+            text-align: center;
+            padding: 60px 40px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .success-container.active {
+            display: block;
+            animation: scaleUp 0.5s ease;
+        }
+        
+        @keyframes scaleUp {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .success-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+        }
+        
+        .success-container h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .success-container p {
+            font-size: 1.2rem;
+            color: #4A5568;
+            margin-bottom: 30px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .success-container .btn {
+            margin-top: 20px;
+        }
+        
+        .availability-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .day-column {
+            text-align: center;
+        }
+        
+        .day-label {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .time-slot {
+            margin-bottom: 5px;
+        }
+        
+        .time-slot label {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            border-radius: 5px;
+            background: #f8fafc;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.8rem;
+        }
+        
+        .time-slot input {
+            margin-right: 5px;
+        }
+        
+        .time-slot label:hover {
+            background: rgba(255, 164, 91, 0.1);
+        }
+        
+        .avatar-upload {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .avatar-preview {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 5px solid #f7fafc;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .avatar-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .avatar-upload label {
+            padding: 10px 20px;
+            background: #f7fafc;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .avatar-upload label:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .avatar-upload input {
+            display: none;
+        }
+        
+        .map-container {
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .lottie-animation {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto;
+        }
+        
+        .service-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .service-item:hover {
+            background: white;
+            border-color: #e2e8f0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .service-checkbox {
+            margin-right: 15px;
+        }
+        
+        .service-info {
+            flex: 1;
+        }
+        
+        .service-name {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .service-desc {
+            font-size: 0.85rem;
+            color: #718096;
+        }
+        
+        .service-price {
+            width: 120px;
+            position: relative;
+        }
+        
+        .service-price input {
+            width: 100%;
+            padding: 8px 30px 8px 10px;
+            border: 2px solid #e2e8f0;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            text-align: right;
+        }
+        
+        .service-price input:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        .service-price:after {
+            content: '$';
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            color: #718096;
+        }
+
+        @media (max-width: 768px) {
+            .provider-type-selector {
+                gap: 15px;
+            }
+            
+            .provider-type-card {
+                width: 150px;
+                height: 180px;
+                padding: 15px;
+            }
+            
+            .provider-icon {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .provider-type-card h3 {
+                font-size: 0.9rem;
+            }
+            
+            .provider-type-card p {
+                font-size: 0.7rem;
+            }
+            
+            .registration-form {
+                padding: 20px;
+            }
+            
+            .registration-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .form-group-split {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .step-indicator {
+                width: 30px;
+                height: 30px;
+                margin: 0 15px;
+            }
+            
+            .step-indicator:not(:last-child):before {
+                width: 30px;
+            }
+            
+            .availability-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .day-column {
+                margin-bottom: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .provider-hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .provider-type-selector {
+                gap: 10px;
+            }
+            
+            .provider-type-card {
+                width: 130px;
+                height: 160px;
+                padding: 10px;
+            }
+            
+            .registration-header {
+                padding: 20px;
+            }
+            
+            .step-indicator {
+                width: 25px;
+                height: 25px;
+                margin: 0 10px;
+                font-size: 0.8rem;
+            }
+            
+            .step-indicator:not(:last-child):before {
+                width: 20px;
+            }
+            
+            .form-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .service-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .service-price {
+                width: 100%;
+                margin-top: 10px;
+            }
+            
+            .success-container h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Floating element animations */
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        .floating-delay-1 {
+            animation-delay: 1s;
+        }
+        
+        .floating-delay-2 {
+            animation-delay: 2s;
+        }
+        
+        @keyframes floating {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header (same as existing site) -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="FurGlo Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#showcase">App Showcase</a></li>
+                    <li><a href="index.html#timeline">Journey</a></li>
+                    <li><a href="index.html#download">Download</a></li>
+                    <li><a href="provider-registration.html" class="active">For Providers</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Provider Registration Hero -->
+    <section class="provider-hero">
+        <div class="provider-hero-shapes">
+            <div class="provider-hero-shape provider-hero-shape-1"></div>
+            <div class="provider-hero-shape provider-hero-shape-2"></div>
+            <div class="provider-hero-shape provider-hero-shape-3"></div>
+        </div>
+        <div class="container">
+            <div class="provider-hero-content">
+                <h1 class="reveal-text">Join the FurGlo Care Network</h1>
+                <p class="reveal-text">Connect with pet parents, grow your business, and provide exceptional care as part of our trusted provider community.</p>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Provider Type Selection -->
+    <section class="provider-cards">
+        <div class="container">
+            <h2 class="section-title reveal-text">Choose Your Provider Type</h2>
+            
+            <div class="provider-type-selector reveal-item">
+                <div class="provider-type-card" data-type="vet">
+                    <div class="provider-icon">
+                        <img src="https://img.icons8.com/color/96/000000/veterinarian.png" alt="Veterinarian">
+                    </div>
+                    <h3>Veterinarian</h3>
+                    <p>Medical care, checkups, treatments</p>
+                </div>
+                
+                <div class="provider-type-card" data-type="groomer">
+                    <div class="provider-icon">
+                        <img src="https://img.icons8.com/color/96/000000/comb.png" alt="Pet Groomer">
+                    </div>
+                    <h3>Pet Groomer</h3>
+                    <p>Styling, bathing, nail trimming</p>
+                </div>
+                
+                <div class="provider-type-card" data-type="boarding">
+                    <div class="provider-icon">
+                        <img src="https://img.icons8.com/color/96/000000/dog-house.png" alt="Pet Boarding">
+                    </div>
+                    <h3>Pet Boarding</h3>
+                    <p>Overnight stays, daycare, pet sitting</p>
+                </div>
+                
+                <div class="provider-type-card" data-type="trainer">
+                    <div class="provider-icon">
+                        <img src="https://img.icons8.com/color/96/000000/dog-training.png" alt="Pet Trainer">
+                    </div>
+                    <h3>Pet Trainer</h3>
+                    <p>Behavior training, obedience, tricks</p>
+                </div>
+                
+                <div class="provider-type-card" data-type="lab">
+                    <div class="provider-icon">
+                        <img src="https://img.icons8.com/color/96/000000/test-tube.png" alt="Diagnostic Lab">
+                    </div>
+                    <h3>Diagnostic Lab</h3>
+                    <p>Testing, analysis, health reports</p>
+                </div>
+                
+                <div class="provider-type-card" data-type="transport">
+                    <div class="provider-icon">
+                        <img src="https://img.icons8.com/color/96/000000/van.png" alt="Pet Transport">
+                    </div>
+                    <h3>Transport</h3>
+                    <p>Pet taxi, emergency transport</p>
+                </div>
+                
+                <div class="provider-type-card" data-type="sitter">
+                    <div class="provider-icon">
+                        <img src="https://img.icons8.com/color/96/000000/dog-walking.png" alt="Pet Sitter">
+                    </div>
+                    <h3>Pet Sitter</h3>
+                    <p>Home visits, walks, feeding</p>
+                </div>
+            </div>
+            
+            <!-- Veterinarian Registration Form -->
+            <div id="vet-registration" class="registration-container">
+                <div class="registration-header">
+                    <h2>Veterinarian Registration</h2>
+                    <p>Join our network of trusted veterinary professionals</p>
+                    <div class="registration-steps">
+                        <div class="step-indicator active" data-step="1">1</div>
+                        <div class="step-indicator" data-step="2">2</div>
+                        <div class="step-indicator" data-step="3">3</div>
+                    </div>
+                </div>
+                
+                <form class="registration-form">
+                    <!-- Step 1: Basic Information -->
+                    <div class="form-step active" data-step="1">
+                        <div class="avatar-upload">
+                            <div class="avatar-preview">
+                                <img id="vet-avatar-preview" src="https://via.placeholder.com/150/f7fafc/4A5568?text=Photo" alt="Profile Preview">
+                            </div>
+                            <label for="vet-avatar">Upload Profile Photo</label>
+                            <input type="file" id="vet-avatar" accept="image/*">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-input" placeholder="Dr. Jane Smith">
+                        </div>
+                        
+                        <div class="form-group-split">
+                            <div class="form-group">
+                                <label class="form-label">Medical License Number</label>
+                                <input type="text" class="form-input" placeholder="VET123456">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Specialization</label>
+                                <select class="form-select">
+                                    <option value="">Select Specialization</option>
+                                    <option value="small-animals">Small Animals</option>
+                                    <option value="exotic-pets">Exotic Pets</option>
+                                    <option value="large-animals">Large Animals</option>
+                                    <option value="surgery">Surgery</option>
+                                    <option value="dentistry">Dentistry</option>
+                                    <option value="dermatology">Dermatology</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group-split">
+                            <div class="form-group">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" class="form-input" placeholder="doctor@vetclinic.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" class="form-input" placeholder="(123) 456-7890">
+                            </div>
+                        </div>
+                        
+                        <div class="form-buttons">
+                            <button type="button" class="btn btn-back" data-action="cancel">Cancel</button>
+                            <button type="button" class="btn btn-primary" data-action="next">Next Step</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Practice Details -->
+                    <div class="form-step" data-step="2">
+                        <div class="form-group">
+                            <label class="form-label">Clinic Name</label>
+                            <input type="text" class="form-input" placeholder="Healthy Paws Veterinary Clinic">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Clinic Address</label>
+                            <input type="text" class="form-input" placeholder="123 Animal Care Blvd, City, State, ZIP">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Clinic Location</label>
+                            <div class="map-container">
+                                <lottie-player src="https://assets3.lottiefiles.com/private_files/lf30_yo2zavgg.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                            </div>
+                            <p style="text-align: center; margin-top: 10px; color: #718096;">
+                                <i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> 
+                                Click on the map to set your exact location or enable GPS
+                            </p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Upload Verification Documents (Optional)</label>
+                            <div class="file-upload">
+                                <i class="fas fa-file-medical"></i>
+                                <p>Drop files here or click to browse</p>
+                                <span>Upload license, certifications, or credentials (PDF, JPG, PNG)</span>
+                                <input type="file" multiple accept=".pdf,.jpg,.jpeg,.png">
+                            </div>
+                            <div class="upload-preview">
+                                <!-- Preview items will appear here -->
+                            </div>
+                        </div>
+                        
+                        <div class="form-buttons">
+                            <button type="button" class="btn btn-back" data-action="prev">Back</button>
+                            <button type="button" class="btn btn-primary" data-action="next">Next Step</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Availability & Account Setup -->
+                    <div class="form-step" data-step="3">
+                        <div class="form-group">
+                            <label class="form-label">Available Days & Time Slots</label>
+                            <div class="availability-grid">
+                                <div class="day-column">
+                                    <div class="day-label">Monday</div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox"> 9am-12pm</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox"> 1pm-5pm</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox"> 6pm-9pm</label>
+                                    </div>
+                                </div>
+                                <div class="day-column">
+                                    <div class="day-label">Tuesday</div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox"> 9am-12pm</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox"> 1pm-5pm</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox"> 6pm-9pm</label>
+                                    </div>
+                                </div>
+                                <div class="day-column">
+                                    <div class="day-label">Wednesday</div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox"> 9am-12pm</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox"> 1pm-5pm</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox"> 6pm-9pm</label>
+                                    </div>
+                                </div>
+                                <div class="day-column">
+                                    <div class="day-label">Thursday</div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox"> 9am-12pm</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox"> 1pm-5pm</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox"> 6pm-9pm</label>
+                                    </div>
+                                </div>
+                                <div class="day-column">
+                                    <div class="day-label">Friday</div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox"> 9am-12pm</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox"> 1pm-5pm</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox"> 6pm-9pm</label>
+                                    </div>
+                                </div>
+                                <div class="day-column">
+                                    <div class="day-label">Saturday</div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox"> 9am-12pm</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox"> 1pm-5pm</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox"> 6pm-9pm</label>
+                                    </div>
+                                </div>
+                                <div class="day-column">
+                                    <div class="day-label">Sunday</div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox"> 9am-12pm</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox"> 1pm-5pm</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox"> 6pm-9pm</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group-split">
+                            <div class="form-group">
+                                <label class="form-label">Username</label>
+                                <input type="text" class="form-input" placeholder="Create a username">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-input" placeholder="Create a secure password">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-checkbox">
+                                <input type="checkbox"> I agree to the Terms of Service and Privacy Policy
+                            </label>
+                        </div>
+                        
+                        <div class="form-buttons">
+                            <button type="button" class="btn btn-back" data-action="prev">Back</button>
+                            <button type="button" class="btn btn-primary" data-action="submit">Complete Registration</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Add these registration container forms right after the vet-registration form -->
+
+<!-- Pet Groomer Registration Form -->
+<div id="groomer-registration" class="registration-container">
+    <div class="registration-header">
+        <h2>Pet Groomer Registration</h2>
+        <p>Join our network of professional pet groomers</p>
+        <div class="registration-steps">
+            <div class="step-indicator active" data-step="1">1</div>
+            <div class="step-indicator" data-step="2">2</div>
+            <div class="step-indicator" data-step="3">3</div>
+        </div>
+    </div>
+    
+    <form class="registration-form">
+        <!-- Step 1: Basic Information -->
+        <div class="form-step active" data-step="1">
+            <div class="avatar-upload">
+                <div class="avatar-preview">
+                    <img id="groomer-avatar-preview" src="https://via.placeholder.com/150/f7fafc/4A5568?text=Photo" alt="Profile Preview">
+                </div>
+                <label for="groomer-avatar">Upload Profile Photo</label>
+                <input type="file" id="groomer-avatar" accept="image/*">
+            </div>
+            
+            <div class="form-group-split">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-input" placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Business Name (if applicable)</label>
+                    <input type="text" class="form-input" placeholder="Fluffy Paws Grooming">
+                </div>
+            </div>
+            
+            <div class="form-group-split">
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" placeholder="you@example.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-input" placeholder="(123) 456-7890">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">License or Certification (if applicable)</label>
+                <input type="text" class="form-input" placeholder="Certificate Number or N/A">
+            </div>
+            
+            <div class="form-buttons">
+                <button type="button" class="btn btn-back" data-action="cancel">Cancel</button>
+                <button type="button" class="btn btn-primary" data-action="next">Next Step</button>
+            </div>
+        </div>
+        
+        <!-- Step 2: Services & Location -->
+        <div class="form-step" data-step="2">
+            <div class="form-group">
+                <label class="form-label">Service Address</label>
+                <input type="text" class="form-input" placeholder="123 Main St, City, State, ZIP">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Service Type</label>
+                <select class="form-select">
+                    <option value="">Select Service Type</option>
+                    <option value="shop">Shop-based</option>
+                    <option value="mobile">Mobile Service</option>
+                    <option value="both">Both Shop & Mobile</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Location</label>
+                <div class="map-container">
+                    <lottie-player src="https://assets3.lottiefiles.com/private_files/lf30_yo2zavgg.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                </div>
+                <p style="text-align: center; margin-top: 10px; color: #718096;">
+                    <i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> 
+                    Click on the map to set your exact location or enable GPS
+                </p>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Upload Portfolio (Before/After Photos - Optional)</label>
+                <div class="file-upload">
+                    <i class="fas fa-images"></i>
+                    <p>Drop files here or click to browse</p>
+                    <span>Show off your best work (JPG, PNG)</span>
+                    <input type="file" multiple accept=".jpg,.jpeg,.png">
+                </div>
+                <div class="upload-preview">
+                    <!-- Preview items will appear here -->
+                </div>
+            </div>
+            
+            <div class="form-buttons">
+                <button type="button" class="btn btn-back" data-action="prev">Back</button>
+                <button type="button" class="btn btn-primary" data-action="next">Next Step</button>
+            </div>
+        </div>
+        
+        <!-- Step 3: Services & Account Setup -->
+        <div class="form-step" data-step="3">
+            <div class="form-group">
+                <label class="form-label">Services Offered & Pricing</label>
+                
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="bath" checked>
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Bath & Basic Grooming</div>
+                        <div class="service-desc">Includes shampoo, conditioning, blow dry, ear cleaning</div>
+                    </div>
+                    <div class="service-price">
+                        <input type="number" value="45" min="0">
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="haircut">
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Haircut & Styling</div>
+                        <div class="service-desc">Custom cut and style according to breed standards or owner preference</div>
+                    </div>
+                    <div class="service-price">
+                        <input type="number" value="35" min="0">
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="nails">
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Nail Trimming</div>
+                        <div class="service-desc">Trimming and filing of nails</div>
+                    </div>
+                    <div class="service-price">
+                        <input type="number" value="15" min="0">
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="teeth">
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Teeth Brushing</div>
+                        <div class="service-desc">Cleaning teeth with pet-safe toothpaste</div>
+                    </div>
+                    <div class="service-price">
+                        <input type="number" value="12" min="0">
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="dematting">
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">De-matting Treatment</div>
+                        <div class="service-desc">Removal of mats and tangles</div>
+                    </div>
+                    <div class="service-price">
+                        <input type="number" value="25" min="0">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Available Days & Time Slots</label>
+                <div class="availability-grid">
+                    <!-- Same as vet form availability grid -->
+                    <div class="day-column">
+                        <div class="day-label">Monday</div>
+                        <div class="time-slot">
+                            <label><input type="checkbox"> 9am-12pm</label>
+                        </div>
+                        <div class="time-slot">
+                            <label><input type="checkbox"> 1pm-5pm</label>
+                        </div>
+                        <div class="time-slot">
+                            <label><input type="checkbox"> 6pm-9pm</label>
+                        </div>
+                    </div>
+                    <!-- Repeat for other days -->
+                </div>
+            </div>
+            
+            <div class="form-group-split">
+                <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-input" placeholder="Create a username">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" placeholder="Create a secure password">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-checkbox">
+                    <input type="checkbox"> I agree to the Terms of Service and Privacy Policy
+                </label>
+            </div>
+            
+            <div class="form-buttons">
+                <button type="button" class="btn btn-back" data-action="prev">Back</button>
+                <button type="button" class="btn btn-primary" data-action="submit">Complete Registration</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Pet Boarding/Daycare Registration Form -->
+<div id="boarding-registration" class="registration-container">
+    <div class="registration-header">
+        <h2>Pet Boarding/Daycare Registration</h2>
+        <p>Join our network of trusted pet boarding facilities</p>
+        <div class="registration-steps">
+            <div class="step-indicator active" data-step="1">1</div>
+            <div class="step-indicator" data-step="2">2</div>
+            <div class="step-indicator" data-step="3">3</div>
+        </div>
+    </div>
+    
+    <form class="registration-form">
+        <!-- Step 1: Basic Information -->
+        <div class="form-step active" data-step="1">
+            <div class="form-group">
+                <label class="form-label">Business Name</label>
+                <input type="text" class="form-input" placeholder="Happy Tails Boarding & Daycare">
+            </div>
+            
+            <div class="form-group-split">
+                <div class="form-group">
+                    <label class="form-label">Facility Type</label>
+                    <select class="form-select">
+                        <option value="">Select Facility Type</option>
+                        <option value="home">Home-based</option>
+                        <option value="kennel">Kennel/Traditional Boarding</option>
+                        <option value="luxury">Luxury Boarding</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">License/Registration ID</label>
+                    <input type="text" class="form-input" placeholder="License Number">
+                </div>
+            </div>
+            
+            <div class="form-group-split">
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" placeholder="contact@example.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-input" placeholder="(123) 456-7890">
+                </div>
+            </div>
+            
+            <div class="form-group-split">
+                <div class="form-group">
+                    <label class="form-label">Facility Address</label>
+                    <input type="text" class="form-input" placeholder="123 Pet Haven Lane, City, State, ZIP">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Capacity (Number of Pets)</label>
+                    <input type="number" class="form-input" placeholder="15" min="1">
+                </div>
+            </div>
+            
+            <div class="form-buttons">
+                <button type="button" class="btn btn-back" data-action="cancel">Cancel</button>
+                <button type="button" class="btn btn-primary" data-action="next">Next Step</button>
+            </div>
+        </div>
+        
+        <!-- Step 2: Facility Details -->
+        <div class="form-step" data-step="2">
+            <div class="form-group">
+                <label class="form-label">Species Accepted</label>
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="dogs" checked>
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Dogs</div>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="cats" checked>
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Cats</div>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="birds">
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Birds</div>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="small-mammals">
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Small Mammals (Rabbits, Guinea Pigs, etc.)</div>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="reptiles">
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Reptiles</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Amenities</label>
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="air-conditioning" checked>
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Air Conditioning/Climate Control</div>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="play-area" checked>
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Play Area/Exercise Yard</div>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="webcam">
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Webcam Access for Owners</div>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="grooming">
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Grooming Services</div>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="training">
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Training Sessions</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Facility Photos</label>
+                <div class="file-upload">
+                    <i class="fas fa-building"></i>
+                    <p>Upload photos of your facility</p>
+                    <span>Show pet parents what their pets will experience (JPG, PNG)</span>
+                    <input type="file" multiple accept=".jpg,.jpeg,.png">
+                </div>
+                <div class="upload-preview">
+                    <!-- Preview items will appear here -->
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Location</label>
+                <div class="map-container">
+                    <lottie-player src="https://assets3.lottiefiles.com/private_files/lf30_yo2zavgg.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                </div>
+            </div>
+            
+            <div class="form-buttons">
+                <button type="button" class="btn btn-back" data-action="prev">Back</button>
+                <button type="button" class="btn btn-primary" data-action="next">Next Step</button>
+            </div>
+        </div>
+        
+        <!-- Step 3: Pricing & Account Setup -->
+        <div class="form-step" data-step="3">
+            <div class="form-group">
+                <label class="form-label">Pricing</label>
+                
+                <div class="form-group-split">
+                    <div class="form-group">
+                        <label class="form-label">Boarding Price (per night)</label>
+                        <div class="service-price" style="width:100%">
+                            <input type="number" value="45" min="0">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Daycare Price (per day)</label>
+                        <div class="service-price" style="width:100%">
+                            <input type="number" value="25" min="0">
+                        </div>
+                    </div>
+                </div>
+                
+                <p style="margin-top: 10px; color: #718096; font-size: 0.9rem;">
+                    Note: You can set up additional pricing options for different pet sizes and special services in your dashboard after registration.
+                </p>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Available Days & Hours</label>
+                <div class="availability-grid">
+                    <!-- Same as previous availability grid -->
+                </div>
+            </div>
+            
+            <div class="form-group-split">
+                <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-input" placeholder="Create a username">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" placeholder="Create a secure password">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-checkbox">
+                    <input type="checkbox"> I agree to the Terms of Service and Privacy Policy
+                </label>
+            </div>
+            
+            <div class="form-buttons">
+                <button type="button" class="btn btn-back" data-action="prev">Back</button>
+                <button type="button" class="btn btn-primary" data-action="submit">Complete Registration</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Pet Trainer Registration Form -->
+<div id="trainer-registration" class="registration-container">
+    <div class="registration-header">
+        <h2>Pet Trainer/Behaviorist Registration</h2>
+        <p>Join our network of professional pet trainers and behaviorists</p>
+        <div class="registration-steps">
+            <div class="step-indicator active" data-step="1">1</div>
+            <div class="step-indicator" data-step="2">2</div>
+            <div class="step-indicator" data-step="3">3</div>
+        </div>
+    </div>
+    
+    <form class="registration-form">
+        <!-- Step 1: Basic Information -->
+        <div class="form-step active" data-step="1">
+            <div class="avatar-upload">
+                <div class="avatar-preview">
+                    <img id="trainer-avatar-preview" src="https://via.placeholder.com/150/f7fafc/4A5568?text=Photo" alt="Profile Preview">
+                </div>
+                <label for="trainer-avatar">Upload Profile Photo</label>
+                <input type="file" id="trainer-avatar" accept="image/*">
+            </div>
+            
+            <div class="form-group-split">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-input" placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Business Name (if applicable)</label>
+                    <input type="text" class="form-input" placeholder="Good Dog Training">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Certifications/Training Background</label>
+                <textarea class="form-input" rows="3" placeholder="List your certifications, education, and relevant experience"></textarea>
+            </div>
+            
+            <div class="form-group-split">
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" placeholder="you@example.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-input" placeholder="(123) 456-7890">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Training Methodology</label>
+                <select class="form-select">
+                    <option value="">Select Primary Methodology</option>
+                    <option value="positive">Positive Reinforcement</option>
+                    <option value="balanced">Balanced Training</option>
+                    <option value="clicker">Clicker Training</option>
+                    <option value="scientific">Scientific Training</option>
+                    <option value="other">Other (specify in services)</option>
+                </select>
+            </div>
+            
+            <div class="form-buttons">
+                <button type="button" class="btn btn-back" data-action="cancel">Cancel</button>
+                <button type="button" class="btn btn-primary" data-action="next">Next Step</button>
+            </div>
+        </div>
+        
+        <!-- Step 2: Services & Location -->
+        <div class="form-step" data-step="2">
+            <div class="form-group">
+                <label class="form-label">Services Offered</label>
+                
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="obedience" checked>
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Basic Obedience Training</div>
+                        <div class="service-desc">Sit, stay, come, leash walking, etc.</div>
+                    </div>
+                    <div class="service-price">
+                        <input type="number" value="60" min="0">
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="behavior" checked>
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Behavior Modification</div>
+                        <div class="service-desc">Addressing aggression, anxiety, fear, etc.</div>
+                    </div>
+                    <div class="service-price">
+                        <input type="number" value="75" min="0">
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="puppy">
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Puppy Training</div>
+                        <div class="service-desc">Early socialization, basic commands, potty training</div>
+                    </div>
+                    <div class="service-price">
+                        <input type="number" value="55" min="0">
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="agility">
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Agility/Sports Training</div>
+                        <div class="service-desc">Obstacle courses, advanced commands, competition prep</div>
+                    </div>
+                    <div class="service-price">
+                        <input type="number" value="65" min="0">
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="therapy">
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Therapy/Service Dog Training</div>
+                        <div class="service-desc">Training for therapy, emotional support, or service work</div>
+                    </div>
+                    <div class="service-price">
+                        <input type="number" value="85" min="0">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Training Mode</label>
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="home-visit" checked>
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Home Visit (at client's location)</div>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="trainer-location" checked>
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">At Trainer's Location</div>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="online-training">
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Online/Virtual Training</div>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="group-classes">
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Group Classes</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Upload Training Videos/Photos (Optional)</label>
+                <div class="file-upload">
+                    <i class="fas fa-film"></i>
+                    <p>Drop files here or click to browse</p>
+                    <span>Share examples of your training techniques (MP4, JPG, PNG)</span>
+                    <input type="file" multiple accept=".mp4,.jpg,.jpeg,.png">
+                </div>
+                <div class="upload-preview">
+                    <!-- Preview items will appear here -->
+                </div>
+            </div>
+            
+            <div class="form-buttons">
+                <button type="button" class="btn btn-back" data-action="prev">Back</button>
+                <button type="button" class="btn btn-primary" data-action="next">Next Step</button>
+            </div>
+        </div>
+        
+        <!-- Step 3: Location & Account Setup -->
+        <div class="form-step" data-step="3">
+            <div class="form-group">
+                <label class="form-label">Service Area/Location</label>
+                <div class="map-container">
+                    <lottie-player src="https://assets3.lottiefiles.com/private_files/lf30_yo2zavgg.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                </div>
+                <p style="text-align: center; margin-top: 10px; color: #718096;">
+                    <i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> 
+                    Set your service radius or specific locations you serve
+                </p>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Available Days & Time Slots</label>
+                <div class="availability-grid">
+                    <!-- Same as previous availability grid -->
+                </div>
+            </div>
+            
+            <div class="form-group-split">
+                <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-input" placeholder="Create a username">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" placeholder="Create a secure password">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-checkbox">
+                    <input type="checkbox"> I agree to the Terms of Service and Privacy Policy
+                </label>
+            </div>
+            
+            <div class="form-buttons">
+                <button type="button" class="btn btn-back" data-action="prev">Back</button>
+                <button type="button" class="btn btn-primary" data-action="submit">Complete Registration</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Pet Diagnostic Lab Registration Form -->
+<div id="lab-registration" class="registration-container">
+    <div class="registration-header">
+        <h2>Pet Diagnostic Lab Registration</h2>
+        <p>Join our network of trusted veterinary diagnostic labs</p>
+        <div class="registration-steps">
+            <div class="step-indicator active" data-step="1">1</div>
+            <div class="step-indicator" data-step="2">2</div>
+            <div class="step-indicator" data-step="3">3</div>
+        </div>
+    </div>
+    
+    <form class="registration-form">
+        <!-- Step 1: Basic Information -->
+        <div class="form-step active" data-step="1">
+            <div class="form-group">
+                <label class="form-label">Lab Name</label>
+                <input type="text" class="form-input" placeholder="PetScan Diagnostic Laboratory">
+            </div>
+            
+            <div class="form-group-split">
+                <div class="form-group">
+                    <label class="form-label">License/Accreditation Number</label>
+                    <input type="text" class="form-input" placeholder="License or Accreditation ID">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Accreditation Type</label>
+                    <select class="form-select">
+                        <option value="">Select Accreditation</option>
+                        <option value="aaha">AAHA Accredited</option>
+                        <option value="avma">AVMA Certified</option>
+                        <option value="state">State Licensed</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group-split">
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" placeholder="lab@example.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-input" placeholder="(123) 456-7890">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Lab Address</label>
+                <input type="text" class="form-input" placeholder="123 Medical Drive, City, State, ZIP">
+            </div>
+            
+            <div class="form-buttons">
+                <button type="button" class="btn btn-back" data-action="cancel">Cancel</button>
+                <button type="button" class="btn btn-primary" data-action="next">Next Step</button>
+            </div>
+        </div>
+        
+        <!-- Step 2: Services -->
+        <div class="form-step" data-step="2">
+            <div class="form-group">
+                <label class="form-label">Services Offered</label>
+                
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="blood-test" checked>
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Blood Tests</div>
+                        <div class="service-desc">Complete blood count, chemistry panels, etc.</div>
+                    </div>
+                    <div class="service-price">
+                        <input type="number" value="75" min="0">
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="xray" checked>
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">X-Ray/Radiography</div>
+                        <div class="service-desc">Digital radiographic imaging</div>
+                    </div>
+                    <div class="service-price">
+                        <input type="number" value="120" min="0">
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="ultrasound">
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Ultrasound</div>
+                        <div class="service-desc">Soft tissue imaging</div>
+                    </div>
+                    <div class="service-price">
+                        <input type="number" value="150" min="0">
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="urinalysis">
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Urinalysis</div>
+                        <div class="service-desc">Urine testing and analysis</div>
+                    </div>
+                    <div class="service-price">
+                        <input type="number" value="45" min="0">
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="parasites">
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Parasite Testing</div>
+                        <div class="service-desc">Fecal analysis, parasite screening</div>
+                    </div>
+                    <div class="service-price">
+                        <input type="number" value="40" min="0">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group-split">
+                <div class="form-group">
+                    <label class="form-label">Average Turnaround Time (hours)</label>
+                    <input type="number" class="form-input" placeholder="24" min="1">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Sample Pickup Available?</label>
+                    <select class="form-select">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Lab Equipment/Facility Photos (Optional)</label>
+                <div class="file-upload">
+                    <i class="fas fa-microscope"></i>
+                    <p>Upload images of your lab equipment</p>
+                    <span>Helps build trust with pet owners and veterinarians (JPG, PNG)</span>
+                    <input type="file" multiple accept=".jpg,.jpeg,.png">
+                </div>
+                <div class="upload-preview">
+                    <!-- Preview items will appear here -->
+                </div>
+            </div>
+            
+            <div class="form-buttons">
+                <button type="button" class="btn btn-back" data-action="prev">Back</button>
+                <button type="button" class="btn btn-primary" data-action="next">Next Step</button>
+            </div>
+        </div>
+        
+        <!-- Step 3: Reports & Account Setup -->
+        <div class="form-step" data-step="3">
+            <div class="form-group">
+                <label class="form-label">Report Format</label>
+                <select class="form-select">
+                    <option value="">Select Default Report Format</option>
+                    <option value="pdf">PDF</option>
+                    <option value="digital">Digital (in-app)</option>
+                    <option value="both">Both PDF & Digital</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Sample Report (Optional)</label>
+                <div class="file-upload">
+                    <i class="fas fa-file-medical-alt"></i>
+                    <p>Upload a sample lab report</p>
+                    <span>Redacted example of your reporting format (PDF)</span>
+                    <input type="file" accept=".pdf">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Operating Hours</label>
+                <div class="availability-grid">
+                    <!-- Same as previous availability grid -->
+                </div>
+            </div>
+            
+            <div class="form-group-split">
+                <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-input" placeholder="Create a username">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" placeholder="Create a secure password">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-checkbox">
+                    <input type="checkbox"> I agree to the Terms of Service and Privacy Policy
+                </label>
+            </div>
+            
+            <div class="form-buttons">
+                <button type="button" class="btn btn-back" data-action="prev">Back</button>
+                <button type="button" class="btn btn-primary" data-action="submit">Complete Registration</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Pet Transport Registration Form -->
+<div id="transport-registration" class="registration-container">
+    <div class="registration-header">
+        <h2>Pet Transportation Service Registration</h2>
+        <p>Join our network of reliable pet transportation providers</p>
+        <div class="registration-steps">
+            <div class="step-indicator active" data-step="1">1</div>
+            <div class="step-indicator" data-step="2">2</div>
+            <div class="step-indicator" data-step="3">3</div>
+        </div>
+    </div>
+    
+    <form class="registration-form">
+        <!-- Step 1: Basic Information -->
+        <div class="form-step active" data-step="1">
+            <div class="form-group-split">
+                <div class="form-group">
+                    <label class="form-label">Business Name</label>
+                    <input type="text" class="form-input" placeholder="Safe Paws Transport">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Driver/Owner Name</label>
+                    <input type="text" class="form-input" placeholder="Your Full Name">
+                </div>
+            </div>
+            
+            <div class="form-group-split">
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" placeholder="transport@example.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-input" placeholder="(123) 456-7890">
+                </div>
+            </div>
+            
+            <div class="form-group-split">
+                <div class="form-group">
+                    <label class="form-label">Driver's License Number</label>
+                    <input type="text" class="form-input" placeholder="License Number">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Business License (if applicable)</label>
+                    <input type="text" class="form-input" placeholder="Business License Number">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Insurance Information</label>
+                <textarea class="form-input" rows="2" placeholder="Describe your insurance coverage for pet transportation"></textarea>
+            </div>
+            
+            <div class="form-buttons">
+                <button type="button" class="btn btn-back" data-action="cancel">Cancel</button>
+                <button type="button" class="btn btn-primary" data-action="next">Next Step</button>
+            </div>
+        </div>
+        
+        <!-- Step 2: Vehicle & Service Details -->
+        <div class="form-step" data-step="2">
+            <div class="form-group">
+                <label class="form-label">Vehicle Type</label>
+                <select class="form-select">
+                    <option value="">Select Vehicle Type</option>
+                    <option value="car">Car (Sedan/Hatchback)</option>
+                    <option value="suv">SUV</option>
+                    <option value="van">Van</option>
+                    <option value="specialized">Specialized Pet Transport Vehicle</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Vehicle Photos</label>
+                <div class="file-upload">
+                    <i class="fas fa-car"></i>
+                    <p>Upload images of your vehicle</p>
+                    <span>Interior and exterior photos help build trust (JPG, PNG)</span>
+                    <input type="file" multiple accept=".jpg,.jpeg,.png">
+                </div>
+                <div class="upload-preview">
+                    <!-- Preview items will appear here -->
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Pet Handling Experience</label>
+                <textarea class="form-input" rows="3" placeholder="Describe your experience handling different types of pets and any relevant training"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Service Area</label>
+                <div class="map-container">
+                    <lottie-player src="https://assets3.lottiefiles.com/private_files/lf30_yo2zavgg.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                </div>
+                <p style="text-align: center; margin-top: 10px; color: #718096;">
+                    <i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> 
+                    Define your service area on the map
+                </p>
+            </div>
+            
+            <div class="form-buttons">
+                <button type="button" class="btn btn-back" data-action="prev">Back</button>
+                <button type="button" class="btn btn-primary" data-action="next">Next Step</button>
+            </div>
+        </div>
+        
+        <!-- Step 3: Pricing & Account Setup -->
+        <div class="form-step" data-step="3">
+            <div class="form-group">
+                <label class="form-label">Pricing Model</label>
+                <select class="form-select" id="pricing-model">
+                    <option value="">Select Pricing Model</option>
+                    <option value="per-km">Per Kilometer/Mile</option>
+                    <option value="per-ride">Flat Rate Per Ride</option>
+                    <option value="zones">Zone-Based Pricing</option>
+                    <option value="custom">Custom Quote Based</option>
+                </select>
+            </div>
+            
+            <div class="form-group pricing-per-km">
+                <label class="form-label">Rate per Kilometer/Mile</label>
+                <div class="service-price" style="width:100%">
+                    <input type="number" value="2.5" min="0" step="0.1">
+                </div>
+            </div>
+            
+            <div class="form-group pricing-per-ride">
+                <label class="form-label">Base Rate per Ride</label>
+                <div class="service-price" style="width:100%">
+                    <input type="number" value="35" min="0">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Available Hours</label>
+                <div class="availability-grid">
+                    <!-- Same as previous availability grid -->
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">GPS Tracking Available?</label>
+                <select class="form-select">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            
+            <div class="form-group-split">
+                <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-input" placeholder="Create a username">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" placeholder="Create a secure password">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-checkbox">
+                    <input type="checkbox"> I agree to the Terms of Service and Privacy Policy
+                </label>
+            </div>
+            
+            <div class="form-buttons">
+                <button type="button" class="btn btn-back" data-action="prev">Back</button>
+                <button type="button" class="btn btn-primary" data-action="submit">Complete Registration</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Pet Sitter Registration Form -->
+<div id="sitter-registration" class="registration-container">
+    <div class="registration-header">
+        <h2>Pet Sitter/Walker Registration</h2>
+        <p>Join our network of trusted pet sitters and walkers</p>
+        <div class="registration-steps">
+            <div class="step-indicator active" data-step="1">1</div>
+            <div class="step-indicator" data-step="2">2</div>
+            <div class="step-indicator" data-step="3">3</div>
+        </div>
+    </div>
+    
+    <form class="registration-form">
+        <!-- Step 1: Basic Information -->
+        <div class="form-step active" data-step="1">
+            <div class="avatar-upload">
+                <div class="avatar-preview">
+                    <img id="sitter-avatar-preview" src="https://via.placeholder.com/150/f7fafc/4A5568?text=Photo" alt="Profile Preview">
+                </div>
+                <label for="sitter-avatar">Upload Profile Photo</label>
+                <input type="file" id="sitter-avatar" accept="image/*">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-input" placeholder="Your Name">
+            </div>
+            
+            <div class="form-group-split">
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" placeholder="you@example.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-input" placeholder="(123) 456-7890">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Experience Level</label>
+                <select class="form-select">
+                    <option value="">Select Experience Level</option>
+                    <option value="beginner">Beginner (0-1 year)</option>
+                    <option value="intermediate">Intermediate (1-3 years)</option>
+                    <option value="experienced">Experienced (3-5 years)</option>
+                    <option value="expert">Expert (5+ years)</option>
+                    <option value="professional">Professional (certified/trained)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Emergency Contact</label>
+                <div class="form-group-split">
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Contact Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-input" placeholder="Contact Phone Number">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-buttons">
+                <button type="button" class="btn btn-back" data-action="cancel">Cancel</button>
+                <button type="button" class="btn btn-primary" data-action="next">Next Step</button>
+            </div>
+        </div>
+        
+        <!-- Step 2: Services & Pets -->
+        <div class="form-step" data-step="2">
+            <div class="form-group">
+                <label class="form-label">Services Offered</label>
+                
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="dog-walking" checked>
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Dog Walking</div>
+                        <div class="service-desc">Individual or group walks</div>
+                    </div>
+                    <div class="service-price">
+                        <input type="number" value="20" min="0">
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="pet-sitting" checked>
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Pet Sitting (Home Visits)</div>
+                        <div class="service-desc">Feeding, play time, medication administration</div>
+                    </div>
+                    <div class="service-price">
+                        <input type="number" value="25" min="0">
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="overnight">
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Overnight Care</div>
+                        <div class="service-desc">Staying at client's home overnight</div>
+                    </div>
+                    <div class="service-price">
+                        <input type="number" value="65" min="0">
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="pet-taxi">
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Pet Taxi</div>
+                        <div class="service-desc">Transportation to vet, groomer, etc.</div>
+                    </div>
+                    <div class="service-price">
+                        <input type="number" value="30" min="0">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Pet Types Comfortable With</label>
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="small-dogs" checked>
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Small Dogs</div>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="medium-dogs" checked>
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Medium Dogs</div>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="large-dogs" checked>
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Large Dogs</div>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="cats" checked>
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Cats</div>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="birds">
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Birds</div>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="small-animals">
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Small Animals (Hamsters, Guinea Pigs, etc.)</div>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="reptiles">
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">Reptiles</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Identity Verification (Optional but Recommended)</label>
+                <div class="file-upload">
+                    <i class="fas fa-id-card"></i>
+                    <p>Upload a photo ID for verification</p>
+                    <span>Will be kept confidential and securely stored</span>
+                    <input type="file" accept=".jpg,.jpeg,.png">
+                </div>
+            </div>
+            
+            <div class="form-buttons">
+                <button type="button" class="btn btn-back" data-action="prev">Back</button>
+                <button type="button" class="btn btn-primary" data-action="next">Next Step</button>
+            </div>
+        </div>
+        
+        <!-- Step 3: Location & Account Setup -->
+        <div class="form-step" data-step="3">
+            <div class="form-group">
+                <label class="form-label">Service Area</label>
+                <div class="map-container">
+                    <lottie-player src="https://assets3.lottiefiles.com/private_files/lf30_yo2zavgg.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                </div>
+                <p style="text-align: center; margin-top: 10px; color: #718096;">
+                    <i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> 
+                    Define your service radius or area on the map
+                </p>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Available Days & Time Slots</label>
+                <div class="availability-grid">
+                    <!-- Same as previous availability grid -->
+                </div>
+            </div>
+            
+            <div class="form-group-split">
+                <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-input" placeholder="Create a username">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" placeholder="Create a secure password">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-checkbox">
+                    <input type="checkbox"> I agree to the Terms of Service and Privacy Policy
+                </label>
+            </div>
+            
+            <div class="form-buttons">
+                <button type="button" class="btn btn-back" data-action="prev">Back</button>
+                <button type="button" class="btn btn-primary" data-action="submit">Complete Registration</button>
+            </div>
+        </div>
+    </form>
+</div>
+            
+            <!-- Success Message (shown after registration) -->
+            <div class="success-container">
+                <div class="success-icon">
+                    <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_s2lryqty.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                </div>
+                <h2>Registration Successful!</h2>
+                <p>Welcome to the FurGlo Provider Network! Your account is currently under review. We'll notify you once it's approved, typically within 1-2 business days.</p>
+                <a href="index.html" class="btn btn-primary">Return to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as existing site) -->
+    <footer>
+        <div class="container">
+            <div class="big-logo reveal-text">FurGlo</div>
+            <div class="footer-links">
+                <div class="footer-col reveal-item">
+                    <h4>App</h4>
+                    <ul>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                        <li><a href="index.html#download">Download</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col reveal-item" data-delay="100">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col reveal-item" data-delay="200">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col reveal-item" data-delay="300">
+                    <h4>Connect</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright reveal-item" data-delay="400">
+                <p>&copy; 2025 FurGlo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Transparent Header
+            const header = document.querySelector('header');
+            
+            function updateHeaderBackground() {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+            
+            window.addEventListener('scroll', updateHeaderBackground);
+            updateHeaderBackground();
+            
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('nav');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    nav.classList.toggle('active');
+                    
+                    if (this.classList.contains('active')) {
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+            
+            // Scroll Reveal Animation
+            function revealElements() {
+                const reveals = document.querySelectorAll('.reveal-text, .reveal-item');
+                
+                reveals.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementBottom = element.getBoundingClientRect().bottom;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100 && elementBottom > 0) {
+                        element.classList.add('active');
+                    }
+                });
+            }
+            
+            // Run animations on scroll
+            window.addEventListener('scroll', revealElements);
+            
+            // Initialize animations on page load
+            setTimeout(revealElements, 100);
+            
+            // Provider Type Selection
+            const providerCards = document.querySelectorAll('.provider-type-card');
+            const registrationContainers = document.querySelectorAll('.registration-container');
+            
+            providerCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // Remove active class from all cards
+                    providerCards.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked card
+                    this.classList.add('active');
+                    
+                    // Show the corresponding registration form
+                    const providerType = this.getAttribute('data-type');
+                    const registrationForm = document.getElementById(providerType + '-registration');
+                    
+                    if (registrationForm) {
+                        // Hide all registration containers
+                        registrationContainers.forEach(container => container.classList.remove('active'));
+                        
+                        // Show the selected registration container
+                        registrationForm.classList.add('active');
+                        
+                        // Scroll to the form
+                        registrationForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+            
+            // Multi-step Form Navigation
+            const nextButtons = document.querySelectorAll('[data-action="next"]');
+            const prevButtons = document.querySelectorAll('[data-action="prev"]');
+            const submitButtons = document.querySelectorAll('[data-action="submit"]');
+            const cancelButtons = document.querySelectorAll('[data-action="cancel"]');
+            
+            nextButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const currentStep = this.closest('.form-step');
+                    const currentStepNumber = parseInt(currentStep.getAttribute('data-step'));
+                    const nextStepNumber = currentStepNumber + 1;
+                    const nextStep = document.querySelector('.form-step[data-step="' + nextStepNumber + '"]');
+                    
+                    if (nextStep) {
+                        // Hide current step
+                        currentStep.classList.remove('active');
+                        
+                        // Show next step
+                        nextStep.classList.add('active');
+                        
+                        // Update step indicators
+                        const stepIndicators = document.querySelectorAll('.step-indicator');
+                        
+                        stepIndicators.forEach(indicator => {
+                            const indicatorStep = parseInt(indicator.getAttribute('data-step'));
+                            
+                            if (indicatorStep < nextStepNumber) {
+                                indicator.classList.add('completed');
+                                indicator.classList.remove('active');
+                            } else if (indicatorStep === nextStepNumber) {
+                                indicator.classList.add('active');
+                                indicator.classList.remove('completed');
+                            } else {
+                                indicator.classList.remove('active', 'completed');
+                            }
+                        });
+                    }
+                });
+            });
+            
+            prevButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const currentStep = this.closest('.form-step');
+                    const currentStepNumber = parseInt(currentStep.getAttribute('data-step'));
+                    const prevStepNumber = currentStepNumber - 1;
+                    const prevStep = document.querySelector('.form-step[data-step="' + prevStepNumber + '"]');
+                    
+                    if (prevStep) {
+                        // Hide current step
+                        currentStep.classList.remove('active');
+                        
+                        // Show previous step
+                        prevStep.classList.add('active');
+                        
+                        // Update step indicators
+                        const stepIndicators = document.querySelectorAll('.step-indicator');
+                        
+                        stepIndicators.forEach(indicator => {
+                            const indicatorStep = parseInt(indicator.getAttribute('data-step'));
+                            
+                            if (indicatorStep < prevStepNumber) {
+                                indicator.classList.add('completed');
+                                indicator.classList.remove('active');
+                            } else if (indicatorStep === prevStepNumber) {
+                                indicator.classList.add('active');
+                                indicator.classList.remove('completed');
+                            } else {
+                                indicator.classList.remove('active', 'completed');
+                            }
+                        });
+                    }
+                });
+            });
+            
+            submitButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Hide the registration form
+                    const registrationContainer = this.closest('.registration-container');
+                    registrationContainer.classList.remove('active');
+                    
+                    // Show the success message
+                    const successContainer = document.querySelector('.success-container');
+                    successContainer.classList.add('active');
+                    
+                    // Scroll to the success message
+                    successContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+            
+            cancelButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Hide the registration form
+                    const registrationContainer = this.closest('.registration-container');
+                    registrationContainer.classList.remove('active');
+                    
+                    // Remove active class from all provider cards
+                    providerCards.forEach(card => card.classList.remove('active'));
+                    
+                    // Scroll back to provider selection
+                    document.querySelector('.provider-type-selector').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+            
+            // Profile Picture Preview
+            const avatarInput = document.getElementById('vet-avatar');
+            const avatarPreview = document.getElementById('vet-avatar-preview');
+            
+            if (avatarInput && avatarPreview) {
+                avatarInput.addEventListener('change', function() {
+                    const file = this.files[0];
+                    
+                    if (file) {
+                        const reader = new FileReader();
+                        
+                        reader.addEventListener('load', function() {
+                            avatarPreview.src = this.result;
+                        });
+                        
+                        reader.readAsDataURL(file);
+                    }
+                });
+            }
+            
+            // File Upload Preview
+            const fileUploads = document.querySelectorAll('.file-upload input');
+            
+            fileUploads.forEach(upload => {
+                upload.addEventListener('change', function() {
+                    const files = this.files;
+                    const previewContainer = this.closest('.form-group').querySelector('.upload-preview');
+                    
+                    if (files.length > 0 && previewContainer) {
+                        // Clear existing previews
+                        previewContainer.innerHTML = '';
+                        
+                        // Add new previews
+                        for (let i = 0; i < files.length; i++) {
+                            const file = files[i];
+                            const previewItem = document.createElement('div');
+                            previewItem.className = 'preview-item';
+                            
+                            // Create preview image or icon based on file type
+                            if (file.type.startsWith('image/')) {
+                                const img = document.createElement('img');
+                                img.src = URL.createObjectURL(file);
+                                previewItem.appendChild(img);
+                            } else {
+                                const icon = document.createElement('i');
+                                icon.className = 'fas fa-file';
+                                icon.style.fontSize = '40px';
+                                icon.style.color = '#4A5568';
+                                icon.style.display = 'flex';
+                                icon.style.alignItems = 'center';
+                                icon.style.justifyContent = 'center';
+                                icon.style.height = '100%';
+                                previewItem.appendChild(icon);
+                            }
+                            
+                            // Add remove button
+                            const removeBtn = document.createElement('div');
+                            removeBtn.className = 'remove-btn';
+                            removeBtn.innerHTML = '<i class="fas fa-times"></i>';
+                            previewItem.appendChild(removeBtn);
+                            
+                            previewContainer.appendChild(previewItem);
+                            
+                            // Add event listener to remove button
+                            removeBtn.addEventListener('click', function() {
+                                previewItem.remove();
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // Create floating pets in the background
+            function createFloatingPets() {
+                const petImages = [
+                    'https://img.icons8.com/color/96/000000/dog.png',
+                    'https://img.icons8.com/color/96/000000/cat.png',
+                    'https://img.icons8.com/color/96/000000/hamster.png',
+                    'https://img.icons8.com/color/96/000000/parrot.png',
+                    'https://img.icons8.com/color/96/000000/rabbit.png'
+                ];
+                
+                const heroSection = document.querySelector('.provider-hero');
+                
+                if (heroSection) {
+                    for (let i = 0; i < 8; i++) {
+                        const pet = document.createElement('img');
+                        pet.src = petImages[Math.floor(Math.random() * petImages.length)];
+                        pet.style.position = 'absolute';
+                        pet.style.width = (30 + Math.random() * 40) + 'px';
+                        pet.style.opacity = (0.2 + Math.random() * 0.3);
+                        pet.style.top = (Math.random() * 100) + '%';
+                        pet.style.left = (Math.random() * 100) + '%';
+                        pet.style.transform = 'translate(-50%, -50%)';
+                        pet.classList.add('floating');
+                        
+                        if (i % 3 === 0) {
+                            pet.classList.add('floating-delay-1');
+                        } else if (i % 3 === 1) {
+                            pet.classList.add('floating-delay-2');
+                        }
+                        
+                        heroSection.querySelector('.provider-hero-shapes').appendChild(pet);
+                    }
+                }
+            }
+            
+            createFloatingPets();
+        });
+
+        // Replace the existing multi-step form navigation code with this improved version
+document.addEventListener('DOMContentLoaded', function() {
+    // More robust event delegation for multi-step form navigation
+    document.addEventListener('click', function(event) {
+        // Check if clicked element is a form navigation button
+        if (event.target.matches('[data-action="next"], [data-action="prev"], [data-action="submit"], [data-action="cancel"]')) {
+            const button = event.target;
+            const action = button.getAttribute('data-action');
+            const currentStep = button.closest('.form-step');
+            const form = button.closest('.registration-form');
+            const registrationContainer = button.closest('.registration-container');
+            
+            if (!currentStep || !form || !registrationContainer) return;
+            
+            // Handle different actions
+            if (action === 'next') {
+                const currentStepNumber = parseInt(currentStep.getAttribute('data-step'));
+                const nextStepNumber = currentStepNumber + 1;
+                const nextStep = form.querySelector(`.form-step[data-step="${nextStepNumber}"]`);
+                
+                if (nextStep) {
+                    // Hide current step
+                    currentStep.classList.remove('active');
+                    
+                    // Show next step
+                    nextStep.classList.add('active');
+                    
+                    // Update step indicators
+                    const stepIndicators = registrationContainer.querySelectorAll('.step-indicator');
+                    
+                    stepIndicators.forEach(indicator => {
+                        const indicatorStep = parseInt(indicator.getAttribute('data-step'));
+                        
+                        if (indicatorStep < nextStepNumber) {
+                            indicator.classList.add('completed');
+                            indicator.classList.remove('active');
+                        } else if (indicatorStep === nextStepNumber) {
+                            indicator.classList.add('active');
+                            indicator.classList.remove('completed');
+                        } else {
+                            indicator.classList.remove('active', 'completed');
+                        }
+                    });
+                }
+            } else if (action === 'prev') {
+                const currentStepNumber = parseInt(currentStep.getAttribute('data-step'));
+                const prevStepNumber = currentStepNumber - 1;
+                const prevStep = form.querySelector(`.form-step[data-step="${prevStepNumber}"]`);
+                
+                if (prevStep) {
+                    // Hide current step
+                    currentStep.classList.remove('active');
+                    
+                    // Show previous step
+                    prevStep.classList.add('active');
+                    
+                    // Update step indicators
+                    const stepIndicators = registrationContainer.querySelectorAll('.step-indicator');
+                    
+                    stepIndicators.forEach(indicator => {
+                        const indicatorStep = parseInt(indicator.getAttribute('data-step'));
+                        
+                        if (indicatorStep < prevStepNumber) {
+                            indicator.classList.add('completed');
+                            indicator.classList.remove('active');
+                        } else if (indicatorStep === prevStepNumber) {
+                            indicator.classList.add('active');
+                            indicator.classList.remove('completed');
+                        } else {
+                            indicator.classList.remove('active', 'completed');
+                        }
+                    });
+                }
+            } else if (action === 'submit') {
+                // Hide the registration form
+                registrationContainer.classList.remove('active');
+                
+                // Show the success message
+                const successContainer = document.querySelector('.success-container');
+                successContainer.classList.add('active');
+                
+                // Scroll to the success message
+                successContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else if (action === 'cancel') {
+                // Hide the registration form
+                registrationContainer.classList.remove('active');
+                
+                // Remove active class from all provider cards
+                document.querySelectorAll('.provider-type-card').forEach(card => card.classList.remove('active'));
+                
+                // Scroll back to provider selection
+                document.querySelector('.provider-type-selector').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    });
+    
+    // Provider Type Selection - Make sure this handles all form types
+    document.querySelectorAll('.provider-type-card').forEach(card => {
+        card.addEventListener('click', function() {
+            // Get the provider type
+            const providerType = this.getAttribute('data-type');
+            
+            // Make sure we have a valid form for this type
+            const registrationForm = document.getElementById(providerType + '-registration');
+            if (!registrationForm) return;
+            
+            // Update active state for cards
+            document.querySelectorAll('.provider-type-card').forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Hide all forms first
+            document.querySelectorAll('.registration-container').forEach(container => {
+                container.classList.remove('active');
+            });
+            
+            // Show the selected form
+            registrationForm.classList.add('active');
+            
+            // Reset form to first step
+            const steps = registrationForm.querySelectorAll('.form-step');
+            steps.forEach((step, index) => {
+                if (index === 0) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+            
+            // Reset step indicators
+            const indicators = registrationForm.querySelectorAll('.step-indicator');
+            indicators.forEach((indicator, index) => {
+                if (index === 0) {
+                    indicator.classList.add('active');
+                    indicator.classList.remove('completed');
+                } else {
+                    indicator.classList.remove('active', 'completed');
+                }
+            });
+            
+            // Scroll to the form
+            registrationForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+    
+    // Make sure all availability grids in the new forms have the same content
+    document.querySelectorAll('.availability-grid').forEach(grid => {
+        if (grid.children.length === 0) {
+            // Clone the first availability grid content
+            const firstGrid = document.querySelector('.availability-grid');
+            if (firstGrid && firstGrid !== grid) {
+                grid.innerHTML = firstGrid.innerHTML;
+            } else {
+                // Create a default grid with all days
+                const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+                const times = ['9am-12pm', '1pm-5pm', '6pm-9pm'];
+                
+                days.forEach(day => {
+                    const dayCol = document.createElement('div');
+                    dayCol.className = 'day-column';
+                    
+                    const dayLabel = document.createElement('div');
+                    dayLabel.className = 'day-label';
+                    dayLabel.textContent = day;
+                    dayCol.appendChild(dayLabel);
+                    
+                    times.forEach(time => {
+                        const timeSlot = document.createElement('div');
+                        timeSlot.className = 'time-slot';
+                        
+                        const label = document.createElement('label');
+                        const input = document.createElement('input');
+                        input.type = 'checkbox';
+                        
+                        label.appendChild(input);
+                        label.appendChild(document.createTextNode(' ' + time));
+                        
+                        timeSlot.appendChild(label);
+                        dayCol.appendChild(timeSlot);
+                    });
+                    
+                    grid.appendChild(dayCol);
+                });
+            }
+        }
+    });
+    
+    // Initialize pricing model display for transport form
+    const pricingModelSelect = document.getElementById('pricing-model');
+    if (pricingModelSelect) {
+        const perKmDiv = document.querySelector('.pricing-per-km');
+        const perRideDiv = document.querySelector('.pricing-per-ride');
+        
+        if (perKmDiv && perRideDiv) {
+            // Initial state
+            perKmDiv.style.display = 'none';
+            perRideDiv.style.display = 'none';
+            
+            pricingModelSelect.addEventListener('change', function() {
+                // Hide all pricing divs first
+                perKmDiv.style.display = 'none';
+                perRideDiv.style.display = 'none';
+                
+                // Show the relevant pricing div
+                if (this.value === 'per-km') {
+                    perKmDiv.style.display = 'block';
+                } else if (this.value === 'per-ride' || this.value === 'zones') {
+                    perRideDiv.style.display = 'block';
+                }
+            });
+        }
+    }
+});
+    </script>
+</body>
+</html>
