@@ -2137,6 +2137,110 @@ body {
                     <!-- Steps 2 and 3 remain the same -->
                     <div class="form-step" data-step="2">
                         <!-- Service & Location content remains the same -->
+                          <div class="form-group">
+                            <label class="form-label">Services Offered</label>
+                            
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="obedience" checked>
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">Basic Obedience Training</div>
+                                    <div class="service-desc">Sit, stay, come, leash walking, etc.</div>
+                                </div>
+                                <div class="service-price">
+                                    <input type="number" value="60" min="0">
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="behavior" checked>
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">Behavior Modification</div>
+                                    <div class="service-desc">Addressing aggression, anxiety, fear, etc.</div>
+                                </div>
+                                <div class="service-price">
+                                    <input type="number" value="75" min="0">
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="puppy">
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">Puppy Training</div>
+                                    <div class="service-desc">Early socialization, basic commands, potty training</div>
+                                </div>
+                                <div class="service-price">
+                                    <input type="number" value="55" min="0">
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="agility">
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">Agility/Sports Training</div>
+                                    <div class="service-desc">Obstacle courses, advanced commands, competition prep</div>
+                                </div>
+                                <div class="service-price">
+                                    <input type="number" value="65" min="0">
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="therapy">
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">Therapy/Service Dog Training</div>
+                                    <div class="service-desc">Training for therapy, emotional support, or service work</div>
+                                </div>
+                                <div class="service-price">
+                                    <input type="number" value="85" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Training Mode</label>
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="home-visit" checked>
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">Home Visit (at client's location)</div>
+                                </div>
+                            </div>
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="trainer-location" checked>
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">At Trainer's Location</div>
+                                </div>
+                            </div>
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="online-training">
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">Online/Virtual Training</div>
+                                </div>
+                            </div>
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="group-classes">
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">Group Classes</div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- Add file upload with preview capability -->
                         <div class="form-group">
                             <label class="form-label">Upload Training Videos/Photos (Optional)</label>
@@ -2159,6 +2263,40 @@ body {
                     
                     <div class="form-step" data-step="3">
                         <!-- Availability & Account Setup content remains the same -->
+                         <div class="form-group">
+                            <label class="form-label">Service Area/Location</label>
+                            <div class="map-container">
+                                <lottie-player src="https://assets3.lottiefiles.com/private_files/lf30_yo2zavgg.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                            </div>
+                            <p style="text-align: center; margin-top: 10px; color: #718096;">
+                                <i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> 
+                                Set your service radius or specific locations you serve
+                            </p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Available Days & Time Slots</label>
+                            <div class="availability-grid">
+                                <!-- Same as previous availability grid -->
+                            </div>
+                        </div>
+                        
+                        <div class="form-group-split">
+                            <div class="form-group">
+                                <label class="form-label">Username</label>
+                                <input type="text" class="form-input" placeholder="Create a username">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-input" placeholder="Create a secure password">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-checkbox">
+                                <input type="checkbox"> I agree to the Terms of Service and Privacy Policy
+                            </label>
+                        </div>
                         <div class="form-buttons">
                             <button type="button" class="btn btn-back" data-action="prev">Back</button>
                             <button type="button" class="btn btn-primary" data-action="submit">Complete Registration</button>
@@ -2237,6 +2375,88 @@ body {
                     
                     <!-- Steps 2 and 3 remain largely the same, just add file upload preview -->
                     <div class="form-step" data-step="2">
+                        <div class="form-group">
+                            <label class="form-label">Services Offered</label>
+                            
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="blood-test" checked>
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">Blood Tests</div>
+                                    <div class="service-desc">Complete blood count, chemistry panels, etc.</div>
+                                </div>
+                                <div class="service-price">
+                                    <input type="number" value="75" min="0">
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="xray" checked>
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">X-Ray/Radiography</div>
+                                    <div class="service-desc">Digital radiographic imaging</div>
+                                </div>
+                                <div class="service-price">
+                                    <input type="number" value="120" min="0">
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="ultrasound">
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">Ultrasound</div>
+                                    <div class="service-desc">Soft tissue imaging</div>
+                                </div>
+                                <div class="service-price">
+                                    <input type="number" value="150" min="0">
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="urinalysis">
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">Urinalysis</div>
+                                    <div class="service-desc">Urine testing and analysis</div>
+                                </div>
+                                <div class="service-price">
+                                    <input type="number" value="45" min="0">
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="parasites">
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">Parasite Testing</div>
+                                    <div class="service-desc">Fecal analysis, parasite screening</div>
+                                </div>
+                                <div class="service-price">
+                                    <input type="number" value="40" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group-split">
+                            <div class="form-group">
+                                <label class="form-label">Average Turnaround Time (hours)</label>
+                                <input type="number" class="form-input" placeholder="24" min="1">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Sample Pickup Available?</label>
+                                <select class="form-select">
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                        </div>
                         <!-- Lab equipment photos with preview -->
                         <div class="form-group">
                             <label class="form-label">Lab Equipment/Facility Photos (Optional)</label>
@@ -2258,6 +2478,15 @@ body {
                     </div>
                     
                     <div class="form-step" data-step="3">
+                        <div class="form-group">
+                            <label class="form-label">Report Format</label>
+                            <select class="form-select">
+                                <option value="">Select Default Report Format</option>
+                                <option value="pdf">PDF</option>
+                                <option value="digital">Digital (in-app)</option>
+                                <option value="both">Both PDF & Digital</option>
+                            </select>
+                        </div>
                         <!-- Sample report upload with preview -->
                         <div class="form-group">
                             <label class="form-label">Sample Report (Optional)</label>
@@ -2270,6 +2499,29 @@ body {
                             <div class="upload-preview" id="lab-report-preview">
                                 <!-- Preview items will appear here -->
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Operating Hours</label>
+                            <div class="availability-grid">
+                                <!-- Same as previous availability grid -->
+                            </div>
+                        </div>
+                        
+                        <div class="form-group-split">
+                            <div class="form-group">
+                                <label class="form-label">Username</label>
+                                <input type="text" class="form-input" placeholder="Create a username">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-input" placeholder="Create a secure password">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-checkbox">
+                                <input type="checkbox"> I agree to the Terms of Service and Privacy Policy
+                            </label>
                         </div>
                         
                         <div class="form-buttons">
@@ -2350,6 +2602,17 @@ body {
                     
                     <!-- Step 2: Vehicle Photos with preview -->
                     <div class="form-step" data-step="2">
+                         <div class="form-group">
+                            <label class="form-label">Vehicle Type</label>
+                            <select class="form-select">
+                                <option value="">Select Vehicle Type</option>
+                                <option value="car">Car (Sedan/Hatchback)</option>
+                                <option value="suv">SUV</option>
+                                <option value="van">Van</option>
+                                <option value="specialized">Specialized Pet Transport Vehicle</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
                         <div class="form-group">
                             <label class="form-label">Vehicle Photos</label>
                             <div class="file-upload">
@@ -2361,6 +2624,21 @@ body {
                             <div class="upload-preview" id="vehicle-photos-preview">
                                 <!-- Preview items will appear here -->
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Pet Handling Experience</label>
+                            <textarea class="form-input" rows="3" placeholder="Describe your experience handling different types of pets and any relevant training"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Service Area</label>
+                            <div class="map-container">
+                                <lottie-player src="https://assets3.lottiefiles.com/private_files/lf30_yo2zavgg.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                            </div>
+                            <p style="text-align: center; margin-top: 10px; color: #718096;">
+                                <i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> 
+                                Define your service area on the map
+                            </p>
                         </div>
                         
                         <div class="form-buttons">
@@ -2382,36 +2660,50 @@ body {
                             </select>
                         </div>
                         
-                        <div class="pricing-option" id="pricing-per-km">
-                            <div class="form-group">
-                                <label class="form-label">Rate per Kilometer/Mile</label>
-                                <div class="service-price" style="width:100%">
-                                    <input type="number" value="2.5" min="0" step="0.1">
-                                </div>
+                        <div class="form-group pricing-per-km">
+                            <label class="form-label">Rate per Kilometer/Mile</label>
+                            <div class="service-price" style="width:100%">
+                                <input type="number" value="2.5" min="0" step="0.1">
                             </div>
                         </div>
                         
-                        <div class="pricing-option" id="pricing-per-ride">
-                            <div class="form-group">
-                                <label class="form-label">Base Rate per Ride</label>
-                                <div class="service-price" style="width:100%">
-                                    <input type="number" value="35" min="0">
-                                </div>
+                        <div class="form-group pricing-per-ride">
+                            <label class="form-label">Base Rate per Ride</label>
+                            <div class="service-price" style="width:100%">
+                                <input type="number" value="35" min="0">
                             </div>
                         </div>
                         
-                        <div class="pricing-option" id="pricing-zones">
-                            <div class="form-group">
-                                <label class="form-label">Zone-Based Pricing</label>
-                                <p style="margin-bottom: 15px; color: #718096;">Define your service zones and prices in your dashboard after registration.</p>
+                        <div class="form-group">
+                            <label class="form-label">Available Hours</label>
+                            <div class="availability-grid">
+                                <!-- Same as previous availability grid -->
                             </div>
                         </div>
                         
-                        <div class="pricing-option" id="pricing-custom">
+                        <div class="form-group">
+                            <label class="form-label">GPS Tracking Available?</label>
+                            <select class="form-select">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group-split">
                             <div class="form-group">
-                                <label class="form-label">Custom Quote Based</label>
-                                <p style="margin-bottom: 15px; color: #718096;">You'll provide custom quotes to each client based on their specific needs.</p>
+                                <label class="form-label">Username</label>
+                                <input type="text" class="form-input" placeholder="Create a username">
                             </div>
+                            <div class="form-group">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-input" placeholder="Create a secure password">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-checkbox">
+                                <input type="checkbox"> I agree to the Terms of Service and Privacy Policy
+                            </label>
                         </div>
                         
                         <div class="form-buttons">
@@ -2502,6 +2794,121 @@ body {
                     <!-- Step 2: Add ID verification with preview -->
                     <div class="form-step" data-step="2">
                         <div class="form-group">
+                            <label class="form-label">Services Offered</label>
+                            
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="dog-walking" checked>
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">Dog Walking</div>
+                                    <div class="service-desc">Individual or group walks</div>
+                                </div>
+                                <div class="service-price">
+                                    <input type="number" value="20" min="0">
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="pet-sitting" checked>
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">Pet Sitting (Home Visits)</div>
+                                    <div class="service-desc">Feeding, play time, medication administration</div>
+                                </div>
+                                <div class="service-price">
+                                    <input type="number" value="25" min="0">
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="overnight">
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">Overnight Care</div>
+                                    <div class="service-desc">Staying at client's home overnight</div>
+                                </div>
+                                <div class="service-price">
+                                    <input type="number" value="65" min="0">
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="pet-taxi">
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">Pet Taxi</div>
+                                    <div class="service-desc">Transportation to vet, groomer, etc.</div>
+                                </div>
+                                <div class="service-price">
+                                    <input type="number" value="30" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Pet Types Comfortable With</label>
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="small-dogs" checked>
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">Small Dogs</div>
+                                </div>
+                            </div>
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="medium-dogs" checked>
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">Medium Dogs</div>
+                                </div>
+                            </div>
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="large-dogs" checked>
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">Large Dogs</div>
+                                </div>
+                            </div>
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="cats" checked>
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">Cats</div>
+                                </div>
+                            </div>
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="birds">
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">Birds</div>
+                                </div>
+                            </div>
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="small-animals">
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">Small Animals (Hamsters, Guinea Pigs, etc.)</div>
+                                </div>
+                            </div>
+                            <div class="service-item">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="reptiles">
+                                </div>
+                                <div class="service-info">
+                                    <div class="service-name">Reptiles</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="form-label">Identity Verification (Optional but Recommended)</label>
                             <div class="file-upload">
                                 <i class="fas fa-id-card"></i>
@@ -2522,6 +2929,40 @@ body {
                     
                     <!-- Step 3 remains largely the same -->
                     <div class="form-step" data-step="3">
+                        <div class="form-group">
+                            <label class="form-label">Service Area</label>
+                            <div class="map-container">
+                                <lottie-player src="https://assets3.lottiefiles.com/private_files/lf30_yo2zavgg.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                            </div>
+                            <p style="text-align: center; margin-top: 10px; color: #718096;">
+                                <i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> 
+                                Define your service radius or area on the map
+                            </p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Available Days & Time Slots</label>
+                            <div class="availability-grid">
+                                <!-- Same as previous availability grid -->
+                            </div>
+                        </div>
+                        
+                        <div class="form-group-split">
+                            <div class="form-group">
+                                <label class="form-label">Username</label>
+                                <input type="text" class="form-input" placeholder="Create a username">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-input" placeholder="Create a secure password">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-checkbox">
+                                <input type="checkbox"> I agree to the Terms of Service and Privacy Policy
+                            </label>
+                        </div>
                         <div class="form-buttons">
                             <button type="button" class="btn btn-back" data-action="prev">Back</button>
                             <button type="button" class="btn btn-primary" data-action="submit">Complete Registration</button>
