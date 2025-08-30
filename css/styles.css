@@ -248,7 +248,7 @@ header.scrolled .mobile-menu-btn span {
 
 .mobile-menu-btn.active span:nth-child(1) {
     transform: translateY(9px) rotate(45deg);
-    background-color: var(--primary);
+    background-color: var(--light);
 }
 
 .mobile-menu-btn.active span:nth-child(2) {
@@ -257,7 +257,7 @@ header.scrolled .mobile-menu-btn span {
 
 .mobile-menu-btn.active span:nth-child(3) {
     transform: translateY(-9px) rotate(-45deg);
-    background-color: var(--primary);
+    background-color: var(--light);
 }
 
 /* Hero Section with Video Background */
