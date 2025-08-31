@@ -501,13 +501,17 @@ header.scrolled .mobile-menu-btn span {
     background: linear-gradient(135deg, rgba(56, 178, 172, 0.2), rgba(56, 178, 172, 0.3));
 }
 
-.feature-icon img {
+.feature-icon img,
+.feature-icon video {
     width: 85px;
     height: 85px;
     transition: var(--transition);
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-.feature:hover .feature-icon img {
+.feature:hover .feature-icon img,
+.feature:hover .feature-icon video {
     transform: scale(1.1);
 }
 
@@ -1354,7 +1358,8 @@ footer:before {
         height: 70px;
     }
     
-    .feature-icon img {
+    .feature-icon img,
+    .feature-icon video {
         width: 35px;
         height: 35px;
     }
