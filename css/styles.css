@@ -248,7 +248,7 @@ header.scrolled .mobile-menu-btn span {
 
 .mobile-menu-btn.active span:nth-child(1) {
     transform: translateY(9px) rotate(45deg);
-    background-color: var(--light);
+    background-color: var(--primary);
 }
 
 .mobile-menu-btn.active span:nth-child(2) {
@@ -257,7 +257,7 @@ header.scrolled .mobile-menu-btn span {
 
 .mobile-menu-btn.active span:nth-child(3) {
     transform: translateY(-9px) rotate(-45deg);
-    background-color: var(--light);
+    background-color: var(--primary);
 }
 
 /* Hero Section with Video Background */
@@ -1360,8 +1360,8 @@ footer:before {
     
     .feature-icon img,
     .feature-icon video {
-        width: 35px;
-        height: 35px;
+        width: 85px;
+        height: 85px;
     }
     
     .phone-frame {
