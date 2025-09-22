@@ -65,6 +65,32 @@ document.addEventListener('DOMContentLoaded', function () {
                 case 'vet':
                     apiData.specialization = getFormValue(formData, ['specialization']);
                     apiData.affiliated_clinic = getFormValue(formData, ['affiliated_clinic', 'business_name']);
+                    
+                    // Add availability data
+                    apiData.availability = {};
+                    const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+                    days.forEach(day => {
+                        apiData.availability[day] = [];
+                        ['morning', 'afternoon', 'evening'].forEach(period => {
+                            const fieldName = `${day}_${period}`;
+                            if (formData[fieldName]) {
+                                apiData.availability[day].push(formData[fieldName]);
+                            }
+                        });
+                    });
+                    
+                    // Add emergency services data
+                    if (formData.emergency_available) {
+                        apiData.emergency_services = {
+                            available: true,
+                            hours_type: getFormValue(formData, ['emergency_hours_type']),
+                            custom_hours: getFormValue(formData, ['custom_emergency_hours']),
+                            contact_number: getFormValue(formData, ['emergency_contact']),
+                            response_time: getFormValue(formData, ['emergency_response_time'])
+                        };
+                    } else {
+                        apiData.emergency_services = { available: false };
+                    }
                     break;
                 case 'groomer':
                     apiData.services_offered = formData.services || [];
@@ -619,6 +645,54 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
         });
+        
+        // 4. Emergency Services Toggle (for veterinarian registration)
+        const emergencyCheckbox = document.getElementById('emergency_available');
+        const emergencyDetails = document.getElementById('emergency_details');
+        const emergencyHoursSelect = document.querySelector('select[name="emergency_hours_type"]');
+        const customEmergencyHours = document.querySelector('.custom-emergency-hours');
+        
+        if (emergencyCheckbox && emergencyDetails) {
+            emergencyCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    emergencyDetails.style.display = 'block';
+                    // Add slide-down animation
+                    emergencyDetails.style.maxHeight = '0';
+                    emergencyDetails.style.overflow = 'hidden';
+                    setTimeout(() => {
+                        emergencyDetails.style.transition = 'max-height 0.3s ease';
+                        emergencyDetails.style.maxHeight = '500px';
+                    }, 10);
+                } else {
+                    emergencyDetails.style.transition = 'max-height 0.3s ease';
+                    emergencyDetails.style.maxHeight = '0';
+                    setTimeout(() => {
+                        emergencyDetails.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+        
+        if (emergencyHoursSelect && customEmergencyHours) {
+            emergencyHoursSelect.addEventListener('change', function() {
+                if (this.value === 'custom') {
+                    customEmergencyHours.style.display = 'block';
+                    // Add slide-down animation
+                    customEmergencyHours.style.maxHeight = '0';
+                    customEmergencyHours.style.overflow = 'hidden';
+                    setTimeout(() => {
+                        customEmergencyHours.style.transition = 'max-height 0.3s ease';
+                        customEmergencyHours.style.maxHeight = '200px';
+                    }, 10);
+                } else {
+                    customEmergencyHours.style.transition = 'max-height 0.3s ease';
+                    customEmergencyHours.style.maxHeight = '0';
+                    setTimeout(() => {
+                        customEmergencyHours.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
 
         // 4. Profile Image Preview
         document.querySelectorAll('.avatar-upload input[type="file"]').forEach(input => {

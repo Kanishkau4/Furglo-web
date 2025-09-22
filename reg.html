@@ -359,9 +359,97 @@
                         </div>
                         
                         <div class="form-group">
-                            <label class="form-label">Emergency Hours</label>
-                            <input type="text" name="emergency_hours" class="form-input" placeholder="24/7, Weekends only, etc.">
+                            <label class="form-label">Available Hours</label>
+                            <p style="color: #718096; font-size: 0.9rem; margin-bottom: 15px;">Select your available appointment times</p>
+                            <div class="availability-grid">
+                                <div class="day-column">
+                                    <div class="day-label">Monday</div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox" name="mon_morning" value="8:00-12:00"> 8:00-12:00</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox" name="mon_afternoon" value="13:00-17:00"> 13:00-17:00</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox" name="mon_evening" value="18:00-21:00"> 18:00-21:00</label>
+                                    </div>
+                                </div>
+                                <div class="day-column">
+                                    <div class="day-label">Tuesday</div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox" name="tue_morning" value="8:00-12:00"> 8:00-12:00</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox" name="tue_afternoon" value="13:00-17:00"> 13:00-17:00</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox" name="tue_evening" value="18:00-21:00"> 18:00-21:00</label>
+                                    </div>
+                                </div>
+                                <div class="day-column">
+                                    <div class="day-label">Wednesday</div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox" name="wed_morning" value="8:00-12:00"> 8:00-12:00</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox" name="wed_afternoon" value="13:00-17:00"> 13:00-17:00</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox" name="wed_evening" value="18:00-21:00"> 18:00-21:00</label>
+                                    </div>
+                                </div>
+                                <div class="day-column">
+                                    <div class="day-label">Thursday</div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox" name="thu_morning" value="8:00-12:00"> 8:00-12:00</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox" name="thu_afternoon" value="13:00-17:00"> 13:00-17:00</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox" name="thu_evening" value="18:00-21:00"> 18:00-21:00</label>
+                                    </div>
+                                </div>
+                                <div class="day-column">
+                                    <div class="day-label">Friday</div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox" name="fri_morning" value="8:00-12:00"> 8:00-12:00</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox" name="fri_afternoon" value="13:00-17:00"> 13:00-17:00</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox" name="fri_evening" value="18:00-21:00"> 18:00-21:00</label>
+                                    </div>
+                                </div>
+                                <div class="day-column">
+                                    <div class="day-label">Saturday</div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox" name="sat_morning" value="9:00-13:00"> 9:00-13:00</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox" name="sat_afternoon" value="14:00-18:00"> 14:00-18:00</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox" name="sat_emergency" value="Emergency Only"> Emergency Only</label>
+                                    </div>
+                                </div>
+                                <div class="day-column">
+                                    <div class="day-label">Sunday</div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox" name="sun_morning" value="10:00-14:00"> 10:00-14:00</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox" name="sun_afternoon" value="Emergency Only"> Emergency Only</label>
+                                    </div>
+                                    <div class="time-slot">
+                                        <label><input type="checkbox" name="sun_closed" value="Closed"> Closed</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        
+                        
                         
                         <div class="form-group">
                             <label class="form-label">Pricing (Optional - can be set later)</label>
